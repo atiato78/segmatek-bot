@@ -304,7 +304,7 @@ public class Application extends SpringBootServletInitializer {
                     .log("${body}")
                     .convertBodyTo(String.class)
                     
-                    .delay(15000)
+                    .delay(5000)
 
                     .process(new Processor() {
                         public void process(Exchange exchange) throws Exception {
