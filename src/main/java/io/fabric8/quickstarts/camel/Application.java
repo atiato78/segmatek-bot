@@ -361,7 +361,7 @@ public class Application extends SpringBootServletInitializer {
                             
                             {
                                 myHashTable.put(exchange.getIn().getHeader("FromWhats").toString(),null);
-                                 error = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <Response><Message>Session Expired</Message></Response>";
+                                 error = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <Response><Message>"+outcome+"</Message></Response>";
                             }
                              
                     
