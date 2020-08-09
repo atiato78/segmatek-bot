@@ -336,6 +336,7 @@ public class Application extends SpringBootServletInitializer {
                             String output =   exchange.getIn().getBody(String.class);
                             log.info("well "+exchange.getIn().getBody(String.class));
                             JSONObject obj=new JSONObject(output);
+                            String respcode = obj.getString("respcode");
                         //    String result =obj.getString("msglist");
                             JSONArray arr=obj.getJSONArray("msglist");
 
@@ -354,8 +355,15 @@ public class Application extends SpringBootServletInitializer {
                             }
 
 
+                            String error = null;
 
-
+                            if (respcode.equals("05002"))
+                            
+                            {
+                                myHashTable.put(exchange.getIn().getHeader("FromWhats").toString(),null);
+                                 error = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <Response><Message>Session Expired</Message></Response>";
+                            }
+                             
                     
                                exchange.getIn().setHeader(Exchange.CONTENT_TYPE, MediaType.APPLICATION_XML);
                 
@@ -363,8 +371,11 @@ public class Application extends SpringBootServletInitializer {
 
                ///  String error = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <Response><Message>Welcome to Segmatek.\nTicket Not Found.\nPlease Send *Ticket_ID* to Query Ticket Status.\nEnjoy Our Service\n"+"</Message></Response>";
  
-                //  if (test)
+                  if (!respcode.equals("05002"))
                               exchange.getIn().setBody(result1);
+                    else 
+                    exchange.getIn().setBody(error);
+
                 //  //             else if (exchange.getIn().getHeader("Body").toString().equals("Details"))
                 //  //             exchange.getIn().setBody(freeunits);
                 //               else 
