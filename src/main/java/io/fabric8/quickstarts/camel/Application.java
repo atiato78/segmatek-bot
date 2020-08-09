@@ -350,8 +350,10 @@ public class Application extends SpringBootServletInitializer {
 
                             {
                              log.info(arr.getJSONObject(i).getString("content"));
-                             result = "<Message>"+arr.getJSONObject(i).getString("content")+" "+"</Message>";
-                             outcome.append(result);
+                             result = "<Message>"+arr.getJSONObject(i).getString("content")+"</Message>";
+                             String out=result.replace("&","and");
+                             String removeM= out.replace("<Message></Message>","");
+                             outcome.append(removeM);
                             }
 
 
@@ -361,7 +363,7 @@ public class Application extends SpringBootServletInitializer {
                             
                             {
                                 myHashTable.put(exchange.getIn().getHeader("FromWhats").toString(),null);
-                                 error = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <Response><Message>"+outcome+"</Message></Response>";
+                                 error = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?> <Response>"+outcome+"</Response>";
                             }
                              
                     
