@@ -29,7 +29,7 @@ server:
     key-store-type: jks
     key-alias: alias
     key-password: mykeypass
-  port: 8442
+  port: 9101
   address : 0.0.0.0
 
 #spring:
