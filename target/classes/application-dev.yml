@@ -10,7 +10,7 @@ camel:
 
 # Binding health checks to a different port
 management:
-  port: 8086
+  port: 8077
 
 # disable all management enpoints except health
 endpoints:
@@ -29,7 +29,7 @@ server:
     key-store-type: jks
     key-alias: alias
     key-password: mykeypass
-  port: 8442
+  port: 9101
   address : 0.0.0.0
 
 #spring:
