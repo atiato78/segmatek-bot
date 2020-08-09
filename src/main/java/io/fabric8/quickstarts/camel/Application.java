@@ -350,7 +350,7 @@ public class Application extends SpringBootServletInitializer {
 
                             {
                              log.info(arr.getJSONObject(i).getString("content"));
-                             result = "<Message>"+arr.getJSONObject(i).getString("content")+"</Message>";
+                             result = "<Message>"+arr.getJSONObject(i).getString("content")+" "+"</Message>";
                              outcome.append(result);
                             }
 
